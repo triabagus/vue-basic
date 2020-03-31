@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplikasi Vue | Directive with argumen dinamis</title>
+</head>
+
+<body>
+    <!-- element kontainer untuk aplikasi -->
+    <div id="app">
+        <h2>Directive with argumen dinamis</h2>
+        <div>
+            <input type="url" v-model:value="url" placeholder="Link Gambar" /><br>
+            <input type="text" v-model:value="caption.text" placeholder="Caption image" /><br>
+            Berikan caption pada attribute
+
+            <select v-model:value="caption.attr">
+                <option>title</option>
+                <option>attr</option>
+            </select>
+        </div>
+
+        <img v-bind:src="url" v-bind:[caption.attr]="caption.text" width="200px" />
+        <p>
+            Caption diberikan pada attribute <code>{{caption.attr}}</code> dengan isi "{{caption.text}}"
+        </p>
+
+    </div>
+</body>
+<!-- Menyisipkan Vuejs dari CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    // aplikasi vue
+    var app = new Vue({
+        el: "#app",
+        data: {
+            url: "https://1.bp.blogspot.com/-6HSc2P72QTA/XWkoQsE2tVI/AAAAAAAAAfM/fhsXxm-HHMYMIed6uXEHatRZES-PkVg5gCLcBGAs/s1600/me.jpg",
+            caption: {
+                attr: "title",
+                text: "Ini caption"
+            }
+        }
+    })
+</script>
+
+</html>

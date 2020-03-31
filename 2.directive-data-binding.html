@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplikasi Vue | Directive Data Binding</title>
+    <style>
+        .preview {
+            padding: 10px;
+            background-color: azure;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- element kontainer untuk aplikasi -->
+    <div id="app">
+        <h2>Directive Data Binding</h2>
+        <p>
+            Direktif data binding adalah direktif yang bertugas untuk mem-binding data ke HTML. Berikut ini beberpa
+            direktif yang sering digunakan untuk data binding:
+        </p>
+
+        <ul>
+            <li>v-bind untuk binding data satu arah</li>
+            <li>v-model untuk binding data dua arah</li>
+            <li> v-html untuk menampilkan data HTML</li>
+            <li>v-text untuk menampilkan data dalam plain teks</li>
+            <li>v-once untuk menampilkan data satu kali (tidak di-render ulang meskipun data berubah).</li>
+        </ul>
+
+        <fieldset>
+            <legend>Buat Artikel</legend>
+            <p><input type="text" v-model:value="title" placeholder="Judul Artikel" /></p>
+            <p><textarea v-model:value="content" cols="30" rows="10"></textarea></p>
+        </fieldset>
+
+        <div class="preview">
+            <h1 v-text="title"></h1>
+            <div v-html="content"></div>
+            <p>Content dalam plain text:</p>
+            <div v-text="content"></div>
+            <p>Yang ini cuma di-render sekali:</p>
+            <div v-once>{{content}}</div>
+        </div>
+    </div>
+</body>
+<!-- Menyisipkan Vuejs dari CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    // aplikasi vue
+    var app = new Vue({
+        el: "#app",
+        data: {
+            title: 'Tutorial data binding',
+            content: '<pre>Ini tutorial vue js</pre>'
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplikasi Vue | Two way binding</title>
+</head>
+
+<body>
+    <!-- element kontainer untuk aplikasi -->
+    <div id="app">
+        <h2>Two way binding</h2>
+        <span>
+            Sebenarnya kita hanya menggunakan direktif v-model untuk melakukan binding dua arah.
+        </span><br><br>
+        <input type="text" v-model:value="message">
+        <p>{{message}}</p>
+    </div>
+</body>
+<!-- Menyisipkan Vuejs dari CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    // aplikasi vue
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello world"
+        }
+    })
+</script>
+
+</html>

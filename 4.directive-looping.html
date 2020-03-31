@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplikasi Vue | Directive Looping Rendering</title>
+</head>
+
+<body>
+    <!-- element kontainer untuk aplikasi -->
+    <div id="app">
+        <h2>Directive Looping Rendering</h2>
+        <p>
+            Direktif perulangan biasanya digunakan untuk nemapilkan banyak data seperti list.
+        </p>
+        <p>
+            Direktif ini hanya terdiri dari v-for dan juga bisa dikombinasikan dengan v-if.
+        </p>
+
+        <hr>
+
+        <h2>Daftar Pekerjaan</h2>
+        <input type="text" placeholder="Tambahkan Pekerjaan" v-model:value="newTask">
+        <button @click="addTask">Tambahkan</button>
+
+        <ul>
+            <li v-for="item in todoLists">
+                <s v-if="item.done">{{item.task}}</s>
+                <b v-else>{{item.task}}</b>
+            </li>
+        </ul>
+    </div>
+</body>
+<!-- Menyisipkan Vuejs dari CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    // aplikasi vue
+    var app = new Vue({
+        el: "#app",
+        data: {
+            newTask: '',
+            todoLists: [{
+                    'done': true,
+                    task: "Belajar"
+                },
+                {
+                    'done': false,
+                    task: "Beli"
+                },
+                {
+                    'done': false,
+                    task: "Mandi"
+                }
+            ]
+        },
+        methods: {
+            addTask: function () {
+                this.todoLists.push({
+                    'done': false,
+                    'task': this.newTask
+                });
+                this.newTask = '';
+            }
+        }
+    })
+</script>
+
+</html>

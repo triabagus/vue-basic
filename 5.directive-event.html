@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplikasi Vue | Directive Event</title>
+</head>
+
+<body>
+    <!-- element kontainer untuk aplikasi -->
+    <div id="app">
+        <h2>Directive Event</h2>
+        <p>
+            Direktif ini digunakan untuk menangani event, misalnya saat sesuatu diklik, disentuh, di-scroll, dll.
+        </p>
+        <p>
+            Direktif untuk event adalah v-on, atau bisa disingkat dengan simbol @ saja.
+        </p>
+
+        <hr>
+
+        <input type="text" v-model:value="name">
+        <button @click="btnClick" @mouseover="hover=true" @mouseout="hover=false">
+            Klik
+        </button>
+        <p v-if="hover">Kamu klik tombol ini</p>
+    </div>
+</body>
+<!-- Menyisipkan Vuejs dari CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    // aplikasi vue
+    var app = new Vue({
+        el: "#app",
+        data: {
+            name: 'Tria bagus',
+            hover: false
+        },
+        methods: {
+            btnClick: function () {
+                alert(`Hi ${this.name}, kamu terbaik`);
+            }
+        }
+    })
+</script>
+
+</html>

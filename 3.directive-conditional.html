@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplikasi Vue | Directive Conditional Rendering</title>
+    <style>
+        .row {
+            width: 50%;
+            float: left
+        }
+    </style>
+</head>
+
+<body>
+    <!-- element kontainer untuk aplikasi -->
+    <div id="app">
+        <h2>Directive Conditional Rendering</h2>
+        <p>
+            Direktif untuk coditional rendering akan kita butuhkan untuk menampilkan data tertentu yang berdasarkan
+            kondisi.
+        </p>
+        <p>
+            Direktif ini terdiri dari:
+        </p>
+        <ul>
+            <li>v-if digunakan jika hanya ada satu kondisi</li>
+            <li>v-else digunakan saat memiliki dua kondisi</li>
+            <li>v-else-if digunakan jika memiliki banyak kondisi</li>
+        </ul>
+
+        <hr>
+
+        <div class="row">
+            <h3>Detail Pesanan</h3>
+            <img :src="cover" width="100" />
+            <h4>{{name}}</h4>
+            <p>Qty : <input type="number" v-model:value="qty" min="1" max="10"></p>
+            <p>Total: Rp. {{price * qty}}</p>
+        </div>
+
+        <div class="row">
+            <input type="checkbox" v-model:value="showBonus"> Tampilkan Bonus
+
+            <div class="detail" v-if="showBonus">
+                <p v-if="qty >= 10">Maaf kamu hanya boleh beli {{qty}}</p>
+                <p v-else-if="qty >= 5">Kamu baru saja membeli setengah barang kami</p>
+                <p v-else-if="qty >= 2">Kamu dapat bonus, karena beli {{qty}} buku ini</p>
+                <p v-else>Beli banyak untuk mendapatkan bonus</p>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Menyisipkan Vuejs dari CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    // aplikasi vue
+    var app = new Vue({
+        el: "#app",
+        data: {
+            showBonus: true,
+            name: 'Buku vue js',
+            cover: 'https://vuejsbook.com/img/vuelogo.png',
+            price: 100000,
+            qty: 1
+        }
+    })
+</script>
+
+</html>
